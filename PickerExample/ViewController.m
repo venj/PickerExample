@@ -57,6 +57,29 @@
     
     ActionSheetCustomPicker *picker = [[ActionSheetCustomPicker alloc] initWithTitle:@"Select something." delegate:self showCancelButton:NO origin:sender initialSelections:@[@(1), @(2)]];
     [picker showActionSheetPicker];
+
+//    UIPickerView *pv = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+//    pv.backgroundColor = [UIColor redColor];
+//    self.pickerView = pv;
+//
+//    // Default to our delegate being the picker's delegate and datasource
+//    pv.delegate = self;
+//    pv.dataSource = self;
+//    self.initialSelections = @[@1, @2];
+//    if ( self.initialSelections )
+//    {
+//        NSAssert(pv.numberOfComponents == self.initialSelections.count, @"Number of sections not match");
+//        for (NSUInteger i = 0; i < [self.initialSelections count]; i++)
+//        {
+//            NSInteger row = [(NSNumber *) self.initialSelections[i] integerValue];
+//            NSAssert([pv numberOfRowsInComponent:i] > row, @"Number of sections not match");
+//            [pv selectRow:row inComponent:i animated:NO];
+//
+//            [pv reloadAllComponents];
+//        }
+//    }
+//    [self.view addSubview:pv];
+
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -65,15 +88,21 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if (component == 0) {
-        return [self.keys count];
+        NSUInteger count = [self.keys count];
+        return count;
     }
     else {
-        NSInteger index = [pickerView selectedRowInComponent:0];
-        return [self.values[index] count];
+        NSInteger selectedRowInFirstComponent = [pickerView selectedRowInComponent:0]; //should be 1
+        NSInteger numberOfRowsInSecondRow = [self.values[selectedRowInFirstComponent] count]; //should be 3
+        NSLog(@"numberOfRowsInSecondRow = %i", numberOfRowsInSecondRow);
+        return numberOfRowsInSecondRow;
     }
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSLog(@"Title for:");
+    NSLog(@"row = %i", row);
+    NSLog(@"component = %i", component);
     if (component == 0) {
         return self.keys[row];
     }

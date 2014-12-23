@@ -11,5 +11,7 @@
 @interface ViewController : UIViewController
 
 
+@property(nonatomic, strong) UIPickerView *pickerView;
+@property(nonatomic) NSArray *initialSelections;
 @end
 
