@@ -32,7 +32,7 @@
                      @[@"Item 2 - 1", @"Item 2 - 2", @"Item 2 - 3", @"Item 2 - 4", @"Item 2 - 5"],
                      @[@"Item 3 - 1", @"Item 3 - 2", @"Item 3 - 3", @"Item 3 - 4", @"Item 3 - 5"],
                     ];
-    
+
     ActionSheetCustomPicker *picker = [[ActionSheetCustomPicker alloc] initWithTitle:@"Select some thing." delegate:self showCancelButton:NO origin:sender initialSelections:@[@(0), @(0)]];
     [picker showActionSheetPicker];
 }
@@ -43,7 +43,7 @@
                      @[@"Item 2 - 1", @"Item 2 - 2", @"Item 2 - 3"],
                      @[@"Item 3 - 1", @"Item 3 - 2", @"Item 3 - 3", @"Item 3 - 4", @"Item 3 - 5"],
                      ];
-    
+
     ActionSheetCustomPicker *picker = [[ActionSheetCustomPicker alloc] initWithTitle:@"Select something." delegate:self showCancelButton:NO origin:sender initialSelections:@[@(0), @(0)]];
     [picker showActionSheetPicker];
 }
@@ -54,31 +54,31 @@
                      @[@"Item 2 - 1", @"Item 2 - 2", @"Item 2 - 3"],
                      @[@"Item 3 - 1", @"Item 3 - 2", @"Item 3 - 3", @"Item 3 - 4", @"Item 3 - 5"],
                      ];
-    
-    ActionSheetCustomPicker *picker = [[ActionSheetCustomPicker alloc] initWithTitle:@"Select something." delegate:self showCancelButton:NO origin:sender initialSelections:@[@(1), @(2)]];
-    [picker showActionSheetPicker];
 
-//    UIPickerView *pv = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
-//    pv.backgroundColor = [UIColor redColor];
-//    self.pickerView = pv;
-//
-//    // Default to our delegate being the picker's delegate and datasource
-//    pv.delegate = self;
-//    pv.dataSource = self;
-//    self.initialSelections = @[@1, @2];
-//    if ( self.initialSelections )
-//    {
-//        NSAssert(pv.numberOfComponents == self.initialSelections.count, @"Number of sections not match");
-//        for (NSUInteger i = 0; i < [self.initialSelections count]; i++)
-//        {
-//            NSInteger row = [(NSNumber *) self.initialSelections[i] integerValue];
-//            NSAssert([pv numberOfRowsInComponent:i] > row, @"Number of sections not match");
-//            [pv selectRow:row inComponent:i animated:NO];
-//
-//            [pv reloadAllComponents];
-//        }
-//    }
-//    [self.view addSubview:pv];
+//    ActionSheetCustomPicker *picker = [[ActionSheetCustomPicker alloc] initWithTitle:@"Select something." delegate:self showCancelButton:NO origin:sender initialSelections:@[@(1), @(2)]];
+//    [picker showActionSheetPicker];
+
+    UIPickerView *pv = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+    pv.backgroundColor = [UIColor redColor];
+    self.pickerView = pv;
+
+    // Default to our delegate being the picker's delegate and datasource
+    pv.delegate = self;
+    pv.dataSource = self;
+    self.initialSelections = @[@1, @2];
+    if ( self.initialSelections )
+    {
+        NSAssert(pv.numberOfComponents == self.initialSelections.count, @"Number of sections not match");
+        for (NSUInteger i = 0; i < [self.initialSelections count]; i++)
+        {
+            NSInteger row = [(NSNumber *) self.initialSelections[i] integerValue];
+            NSAssert([pv numberOfRowsInComponent:i] > row, @"Number of sections not match");
+            [pv selectRow:row inComponent:i animated:NO];
+
+            [pv reloadAllComponents];
+        }
+    }
+    [self.view addSubview:pv];
 
 }
 
