@@ -55,11 +55,20 @@
                      @[@"Item 3 - 1", @"Item 3 - 2", @"Item 3 - 3", @"Item 3 - 4", @"Item 3 - 5"],
                      ];
 
-//    ActionSheetCustomPicker *picker = [[ActionSheetCustomPicker alloc] initWithTitle:@"Select something." delegate:self showCancelButton:NO origin:sender initialSelections:@[@(1), @(2)]];
-//    [picker showActionSheetPicker];
+    ActionSheetCustomPicker *picker = [[ActionSheetCustomPicker alloc] initWithTitle:@"Select something." delegate:self showCancelButton:NO origin:sender initialSelections:@[@(1), @(2)]];
+    [picker showActionSheetPicker];
+}
 
-    UIPickerView *pv = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
-    pv.backgroundColor = [UIColor redColor];
+- (IBAction)purePickerExample:(id)sender {
+    self.keys = @[@"Array 1", @"Array 2", @"Array 3"];
+    self.values = @[ @[@"Item 1 - 1"],
+                     @[@"Item 2 - 1", @"Item 2 - 2", @"Item 2 - 3"],
+                     @[@"Item 3 - 1", @"Item 3 - 2", @"Item 3 - 3", @"Item 3 - 4", @"Item 3 - 5"],
+                     ];
+
+    int i1 = 150;
+    UIPickerView *pv = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - i1, self.view.bounds.size.width, i1)];
+    pv.backgroundColor = [UIColor whiteColor];
     self.pickerView = pv;
 
     // Default to our delegate being the picker's delegate and datasource
@@ -79,7 +88,6 @@
         }
     }
     [self.view addSubview:pv];
-
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
